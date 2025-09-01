@@ -1,0 +1,11 @@
+/node_modules
+/oh_modules
+/.preview
+/build
+/.cxx
+/.test
+.hvigor
+.idea
+.VSCodeCounter
+local.properties
+package-lock.json

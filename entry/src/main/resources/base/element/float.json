@@ -1,0 +1,16 @@
+{
+  "float": [
+    {
+      "name": "page_text_font_size",
+      "value": "50fp"
+    },
+    {
+      "name": "song_font_size",
+      "value": "20fp"
+    },
+    {
+      "name": "author_font_size",
+      "value": "20fp"
+    }
+  ]
+}

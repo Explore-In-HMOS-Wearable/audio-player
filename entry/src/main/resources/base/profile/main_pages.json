@@ -1,0 +1,6 @@
+{
+  "src": [
+    "ui/pages/Home",
+    "ui/pages/AudioView"
+  ]
+}
