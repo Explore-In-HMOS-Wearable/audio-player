@@ -7,7 +7,6 @@ export class AudioViewViewModel extends BaseViewModel {
   @Trace isInited: boolean = false;
   audioService: AudioService = AudioService.getInstance();
 
-
   constructor() {
     super();
     this.initVm();

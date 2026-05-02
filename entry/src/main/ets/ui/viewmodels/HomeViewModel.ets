@@ -16,8 +16,6 @@ export class HomeViewModel extends BaseViewModel {
     this.isInited = true;
   }
 
-
-
   startAudio(songModel: SongModel) {
     this.audioService.playEmbeddedMp3(songModel.songPath);
   }

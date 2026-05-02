@@ -3,14 +3,12 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 import { window } from '@kit.ArkUI';
 import GlobalContext from '../core/services/GlobalContext';
 
-
 const DOMAIN = 0x0000;
 
 export default class EntryAbility extends UIAbility {
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
     this.context.getApplicationContext().setColorMode(ConfigurationConstant.ColorMode.COLOR_MODE_NOT_SET);
     hilog.info(DOMAIN, 'testTag', '%{public}s', 'Ability onCreate');
-
 
     if (want.abilityName !== undefined) {
       hilog.info(DOMAIN, launchParam.launchReason.toString(), '%{public}s', 'Ability onCreate');

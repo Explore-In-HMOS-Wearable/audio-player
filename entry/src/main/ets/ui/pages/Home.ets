@@ -29,7 +29,6 @@ class MenuDataSource implements IDataSource {
   }
 }
 
-
 @Entry
 @Component
 struct Home {
@@ -39,7 +38,6 @@ struct Home {
   totalPages: number = 2;
   translateX: number = 0;
   @Provide('pathStack') pathStack: NavPathStack = new NavPathStack()
-
 
   @Builder
   PageMap(name: string) {

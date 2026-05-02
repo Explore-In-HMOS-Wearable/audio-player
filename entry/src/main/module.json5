@@ -5,8 +5,7 @@
     "description": "$string:module_desc",
     "mainElement": "EntryAbility",
     "deviceTypes": [
-      "wearable",
-      "phone",
+      "wearable"
     ],
 
     "deliveryWithInstall": true,
@@ -46,6 +45,11 @@
             "resource": "$profile:backup_config"
           }
         ],
+      }
+    ],
+    "requestPermissions": [
+      {
+        "name": "ohos.permission.VIBRATE"
       }
     ]
   }

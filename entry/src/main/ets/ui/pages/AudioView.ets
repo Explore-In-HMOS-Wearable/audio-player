@@ -10,9 +10,27 @@ export struct AudioView {
     this.audioVM.initVm();
   }
 
+  formatTime(ms: number): string {
+    const totalSeconds = Math.floor(ms / 1000);
+    const minutes = Math.floor(totalSeconds / 60);
+    const seconds = totalSeconds % 60;
+    return `${minutes}:${seconds.toString().padStart(2, '0')}`;
+  }
+
   build() {
     NavDestination() {
-      Column() {
+      Stack() {
+        Progress({
+          value: this.audioVM.audioService.currentTime,
+          total: this.audioVM.audioService.duration,
+          type: ProgressType.Ring
+        })
+          .width('100%')
+          .height('100%')
+          .color(Color.Yellow)
+          .style({ strokeWidth: 10 })
+
+        Column() {
         Column() {
           //Author
           Text(this.audioVM.audioService.currentSong.songName)
@@ -45,8 +63,12 @@ export struct AudioView {
             .margin({ top: 4, bottom: 10 });
         }.flexGrow(1).justifyContent(FlexAlign.End)
 
-
         Column() {
+          Text(`${this.formatTime(this.audioVM.audioService.currentTime)} / ${this.formatTime(this.audioVM.audioService.duration)}`)
+            .fontSize(14)
+            .fontColor(Color.White)
+            .margin({ bottom: 10 })
+
           Row() {
             Image($r('app.media.previous'))
               .width(40)
@@ -54,8 +76,8 @@ export struct AudioView {
               .fillColor(Color.White)
               .margin({ right: 20 })
               .onClick(() => {
+                this.audioVM.audioService.triggerHapticFeedback();
                 this.audioVM.previousSong();
-
               });
 
             Image($r(this.audioVM.audioService.audioStatus === AudioStatus.Playing ? 'app.media.pause' :
@@ -64,6 +86,7 @@ export struct AudioView {
               .height(50)
               .fillColor(Color.White)
               .onClick(async () => {
+                this.audioVM.audioService.triggerHapticFeedback();
                 if (this.audioVM.audioService.audioStatus !== AudioStatus.Playing) {
                   await this.audioVM.startAudio(this.audioVM.audioService.currentSong);
 
@@ -79,6 +102,7 @@ export struct AudioView {
               .fillColor(Color.White)
               .margin({ left: 20 })
               .onClick(() => {
+                this.audioVM.audioService.triggerHapticFeedback();
                 this.audioVM.nextSong();
               });
           }
@@ -93,8 +117,21 @@ export struct AudioView {
       .alignItems(HorizontalAlign.Center)
       .height('100%')
       .width('100%')
+      }
       .backgroundColor(Color.Black);
     }
+    .focusable(true)
+    .defaultFocus(true)
+    .onDigitalCrown((event: CrownEvent) => {
+      const sensitivity = 0.001;
+      const delta = event.angularVelocity * sensitivity;
+      const oldVolume = this.audioVM.audioService.volume;
+      this.audioVM.audioService.setVolume(oldVolume + delta);
+
+      if (Math.floor(oldVolume * 10) !== Math.floor(this.audioVM.audioService.volume * 10)) {
+        this.audioVM.audioService.triggerHapticFeedback();
+      }
+    })
     .hideTitleBar(true)
     .hideBackButton(true)
   }

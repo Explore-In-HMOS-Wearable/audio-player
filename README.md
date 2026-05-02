@@ -1,5 +1,3 @@
-> **Note:** To access all shared projects, get information about environment setup, and view other guides, please visit [Explore-In-HMOS-Wearable Index](https://github.com/Explore-In-HMOS-Wearable/hmos-index).
-
 # Audio Player
 
 This is a simple music player application demonstrating basic audio playback capabilities. The app provides Music file browsing and playback and Playback controls
@@ -22,7 +20,6 @@ This is a simple music player application demonstrating basic audio playback cap
 - **Frameworks**: HarmonyOS SDK 5.1.0(18)
 - **Tools**: DevEco Studio Vers 5.1.0.842
 - **Libraries**: @kit.MediaKit, @kit.AudioKit, @kit.AbilityKit
-
 
 # Directory Structure
 
@@ -50,7 +47,6 @@ This is a simple music player application demonstrating basic audio playback cap
 # Constraints and Restrictions
 ## Supported Devices
 - Huawei Watch 5
-
 
 # LICENSE
 
