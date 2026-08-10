@@ -5,8 +5,8 @@ This is a simple music player application demonstrating basic audio playback cap
 # Preview
 
 <p align="left">
-  <img src="./screenshots/1.png" width="25%">
-  <img src="./screenshots/2.png" width="25%">
+  <img src="./Screenshots/1.png" width="25%">
+  <img src="./Screenshots/2.png" width="25%">
 </p>
 
 # Use Cases
